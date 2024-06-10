@@ -23,7 +23,7 @@ jobs:
         - name: login to docker hub
           id: docker-hub
           run: |
-            docker login -u treecmp -p treecmp2017 
+            docker login -u treecmp -p kaims2017 
         - name: build the docker image
           id: build-docker-image
           run: |

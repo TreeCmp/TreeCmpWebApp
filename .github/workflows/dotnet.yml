@@ -31,4 +31,4 @@ jobs:
             docker build . -f ./src/TreeCmp.WebUI/Dockerfile -t treecmp/treecmp.webapp:latest
         - name: push the docker image
           id: push-docker-image
-          run: docker push ${{secrets.DOCKERHUB_USERNAME}}/treecmp.webapp:latest
+          run: docker push treecmp/treecmp.webapp:latest

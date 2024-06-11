@@ -77,7 +77,7 @@ jobs:
         - name: login to docker hub
           id: docker-hub
           run: |
-            docker login -u treecmp -p kaims2017 
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }} 
         - name: build the docker image
           id: build-docker-image
           run: |

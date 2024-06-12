@@ -8,6 +8,6 @@ namespace Infrastructure.DAL
 {
     internal sealed class MariaDBOptions
     {
-        public string ConnectionString { get; init; } = string.Empty;
+        public string ConnectionStringForIdentity { get; init; } = string.Empty;
     }
 }

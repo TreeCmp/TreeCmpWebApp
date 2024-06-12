@@ -11,14 +11,14 @@ namespace Infrastructure.DAL
         public static void AddMariaDB(this IServiceCollection services, IConfiguration configuration)
         {
             // komendy do dla KMP:
-            // usuwanie bazy danych:
-            //   - Drop-Database -Context IdentityContext -Project Infrastructure
-            // tworzenia migracji:
-            //   - Add-Migration InitIdentityData -Context IdentityContext -Project Infrastructure
-            // aktualizacji bazy danych na podstawie migracji:
-            //   - Update-Database InitIdentityData -Context IdentityContext -Project Infrastructure
-            // usunięcia ostatniej migracji:
-            //   - Add-Migration -Context IdentityContext -Project Infrastructure
+            // - usuwanie bazy danych:
+            // Drop-Database -Context IdentityContext -Project Infrastructure
+            // - tworzenia migracji:
+            // Add-Migration InitIdentityData -Context IdentityContext -Project Infrastructure
+            // - aktualizacji bazy danych na podstawie migracji:
+            // Update-Database InitIdentityData -Context IdentityContext -Project Infrastructure
+            // - usunięcia ostatniej migracji:
+            // Add-Migration -Context IdentityContext -Project Infrastructure
 
 
             services.Configure<MariaDBOptions>(configuration.GetRequiredSection(OptionsSectionName));

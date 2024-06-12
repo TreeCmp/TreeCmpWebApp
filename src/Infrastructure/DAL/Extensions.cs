@@ -10,14 +10,14 @@ namespace Infrastructure.DAL
         private const string OptionsSectionName = "MariaDB";
         public static void AddMariaDB(this IServiceCollection services, IConfiguration configuration)
         {
-            // komendy do dla KMP:
+            // komendy do dla EF tools:
             // - usuwanie bazy danych:
             // Drop-Database -Context IdentityContext -Project Infrastructure
-            // - tworzenia migracji:
+            // - tworzenie migracji:
             // Add-Migration InitIdentityData -Context IdentityContext -Project Infrastructure
-            // - aktualizacji bazy danych na podstawie migracji:
+            // - aktualizacja bazy danych na podstawie migracji:
             // Update-Database InitIdentityData -Context IdentityContext -Project Infrastructure
-            // - usunięcia ostatniej migracji:
+            // - usunięcie ostatniej migracji:
             // Add-Migration -Context IdentityContext -Project Infrastructure
 
 

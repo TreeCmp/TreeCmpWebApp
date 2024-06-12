@@ -23,7 +23,7 @@ namespace Infrastructure.DAL
 
             services.Configure<MariaDBOptions>(configuration.GetRequiredSection(OptionsSectionName));
             var mariaDBOptions = configuration.GetOptions<MariaDBOptions>(OptionsSectionName);
-            var serverVersion = new MariaDbServerVersion(new Version(10, 11, 2));
+            var serverVersion = new MariaDbServerVersion(new Version(mariaDBOptions.VersionMajor, mariaDBOptions.VersionMinor, mariaDBOptions.VersionBuild));
             services.AddDbContext<IdentityContext>(
             dbContextOptions => dbContextOptions
                 .UseMySql(mariaDBOptions.ConnectionStringForIdentity, serverVersion)

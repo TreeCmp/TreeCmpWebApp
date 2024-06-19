@@ -11,7 +11,7 @@ namespace Infrastructure.Identity
     {
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            // https://learn.microsoft.com/en-us/dotnet/api/system.net.mail.smtpclient
+            // https://mailtrap.io/blog/asp-net-core-send-email/
             throw new NotImplementedException();
         }
     }

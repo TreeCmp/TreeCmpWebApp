@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -19,20 +20,34 @@ namespace Infrastructure.DAL
             // Update-Database InitIdentityData -Context IdentityContext -Project Infrastructure
             // - usunięcie ostatniej migracji:
             // Add-Migration -Context IdentityContext -Project Infrastructure
-
-
             services.Configure<MariaDBOptions>(configuration.GetRequiredSection(OptionsSectionName));
             var mariaDBOptions = configuration.GetOptions<MariaDBOptions>(OptionsSectionName);
             var serverVersion = new MariaDbServerVersion(new Version(mariaDBOptions.VersionMajor, mariaDBOptions.VersionMinor, mariaDBOptions.VersionBuild));
-            services.AddDbContext<IdentityContext>(
-            dbContextOptions => dbContextOptions
+            //services.AddDbContext<ApplicationDbContext>(
+            //    dbContextOptions => dbContextOptions
+            //    .UseMySql(mariaDBOptions.ConnectionStringForApplicationDb, serverVersion)
+            //    // The following three options help with debugging, but should
+            //    // be changed or removed for production.
+            //    .LogTo(Console.WriteLine, LogLevel.Information)
+            //    .EnableSensitiveDataLogging()
+            //    .EnableDetailedErrors()
+            //);
+
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<IdentityContext>();
+
+
+            services.AddDbContext<IdentityContext>(            
+                dbContextOptions => dbContextOptions
                 .UseMySql(mariaDBOptions.ConnectionStringForIdentity, serverVersion)
                 // The following three options help with debugging, but should
                 // be changed or removed for production.
                 .LogTo(Console.WriteLine, LogLevel.Information)
                 .EnableSensitiveDataLogging()
                 .EnableDetailedErrors()
-        );
+            );
+            services.AddDatabaseDeveloperPageExceptionFilter();
         }
 
         public static T GetOptions<T>(this IConfiguration configuration, string sectionName) where T : class, new()

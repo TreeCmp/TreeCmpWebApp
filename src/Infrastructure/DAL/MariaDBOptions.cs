@@ -8,6 +8,7 @@ namespace Infrastructure.DAL
 {
     internal sealed class MariaDBOptions
     {
+        public string ConnectionStringForApplicationDb { get; set; } = string.Empty;
         public string ConnectionStringForIdentity { get; init; } = string.Empty;
         public int VersionMajor { get; set; }
         public int VersionMinor { get; set; }

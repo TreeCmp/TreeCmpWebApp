@@ -16,6 +16,7 @@ namespace Infrastructure
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddMariaDB(configuration);
+            services.Configure<MailSettings>(configuration.GetSection("MailSettings"));
             services.AddScoped<IEmailSender, EmailSender>();
         }
     }

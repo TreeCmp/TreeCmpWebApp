@@ -39,6 +39,13 @@ namespace Infrastructure.Identity
                 emailMessage.Subject = subject;
 
                 BodyBuilder emailBodyBuilder = new BodyBuilder();
+
+                // glitch in asp.net core
+                if (htmlMessage.Contains("amp;"))
+                {
+                    htmlMessage = htmlMessage.Replace("amp;", "");
+                }
+
                 emailBodyBuilder.TextBody = htmlMessage;
 
                 emailMessage.Body = emailBodyBuilder.ToMessageBody();

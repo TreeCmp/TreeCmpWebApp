@@ -15,6 +15,7 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+app.UseRouting();
 app.UseInfrastructure();
 
 app.UseHttpsRedirection();

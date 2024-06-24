@@ -30,7 +30,7 @@ namespace Infrastructure.Identity
             {
                 MailboxAddress emailFrom = new MailboxAddress(_mailSettings.SenderName, _mailSettings.SenderEmail);
                 emailMessage.From.Add(emailFrom);
-                MailboxAddress emailTo = new MailboxAddress("LALAL", email);
+                MailboxAddress emailTo = new MailboxAddress(email.Split('@')[0], email);
                 emailMessage.To.Add(emailTo);
 
                 //emailMessage.Cc.Add(new MailboxAddress("Cc Receiver", "cc@example.com"));
